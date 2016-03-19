@@ -39,6 +39,14 @@
 pip install easytrader
 ```
 
+注： `Window` 用户 `pip` 安装时会提示 `No module named xxx`, 请使用 `pip install xxx` 安装对应缺失的 `module`, 然后再重新 `pip install easytrader`
+
+### 升级
+
+```python
+pip install easytrader --upgrade
+```
+
 ### 用法
 
 #### 引入:
@@ -65,7 +73,7 @@ user = easytrader.use('ht') # 华泰支持 ['ht', 'HT', '华泰']
 user = easytrader.use('yh') # 银河支持 ['yh', 'YH', '银河']
 ```
 
-##### 自动登录
+#### 登录帐号
 
 ```python
 user.prepare('ht.json') // 或者 yjb.json 或者 yh.json 等配置文件路径
@@ -260,6 +268,32 @@ user.get_exchangebill('开始日期', '截止日期')   # 指定查询时间段,
 
 # 未确认的key有, farex, fare3
 # 未确认的表头有 结算汇率, 备注
+```
+
+#### 查询当日成交
+
+##### 佣金宝
+
+```python
+user.current_deal
+```
+
+**return**
+
+```python
+[{'business_amount': '成交数量',
+'business_price': '成交价格',
+'entrust_amount': '委托数量',
+'entrust_bs': '买卖方向',
+'stock_account': '证券帐号',
+'fund_account': '资金帐号',
+'position_str': '定位串',
+'business_status': '成交状态',
+'date': '发生日期',
+'business_type': '成交类别',
+'business_time': '成交时间',
+'stock_code': '证券代码',
+'stock_name': '证券名称'}]
 ```
 
 ### 命令行模式
