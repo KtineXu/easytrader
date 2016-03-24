@@ -75,13 +75,16 @@ class WebTrader(object):
         while True:
             if self.heart_active:
                 try:
-                    response = self.balance
+                    response = self.heartbeat()
                 except:
                     pass
                 self.check_account_live(response)
                 time.sleep(10)
             else:
                 time.sleep(1)
+
+    def heartbeat(self):
+        return self.balance
 
     def check_account_live(self, response):
         pass
@@ -127,7 +130,7 @@ class WebTrader(object):
     def get_current_deal(self):
         """获取当日委托列表"""
         # return self.do(self.config['current_deal'])
-        # TODO 目前仅在 华泰子类 中实现
+        # TODO 目前仅在 佣金宝子类 中实现
         log.info('目前仅在 佣金宝子类 中实现, 其余券商需要补充')
 
     @property
