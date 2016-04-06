@@ -29,3 +29,5 @@ def use(broker, debug=True, **kwargs):
         return YHTrader()
     if broker.lower() in ['xq', 'XQ', '雪球']:
         return XueQiuTrader()
+
+
